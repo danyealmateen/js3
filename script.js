@@ -121,16 +121,13 @@ checkIfPalindrome("level");
 //2.
 function capsFirstLetter(word) {
   const words = word.split(" ");
-  console.log(words);
-
   const capsFirstWord = words.map((word) => {
-    const firstLetter = word.charAt(0).toUpperCase();
+    const firstLetterUpperCased = word.charAt(0).toUpperCase();
     const restOfWord = word.slice(1);
-    return firstLetter + restOfWord;
+    const newWord = firstLetterUpperCased + restOfWord;
+    return newWord;
   });
-
   const capitalizedSentence = capsFirstWord.join(" ");
-
   console.log(capitalizedSentence);
 }
 capsFirstLetter("send me the money");
