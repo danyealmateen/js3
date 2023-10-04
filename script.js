@@ -130,7 +130,7 @@ function longestWord(str) {
   });
   return longest;
 }
-console.log(longestWord("Hello my name is JavascriptSlayer99"));
+// console.log(longestWord("Hello my name is JavascriptSlayer99"));
 
 //8
 function duplicatedValues(arr) {
@@ -149,4 +149,86 @@ function duplicatedValues(arr) {
   }
   return duplicates;
 }
-console.log(duplicatedValues([1, 2, 2, 3, 3, "hi", "hi"]));
+// console.log(duplicatedValues([1, 2, 2, 3, 3, "hi", "hi"]));
+
+//9 Create a function that counts the occurrences of a value in an array.
+//EX: [1,2,2,3,4,6,7,1,4] -> { '1': 2, '2': 2, '3': 1, '4': 2, '6': 1, '7': 1 }
+function countOccurrencies(arr) {
+  let occuObj = {};
+
+  for (let ele of arr) {
+    if (occuObj[ele]) {
+      occuObj[ele]++;
+    } else {
+      occuObj[ele] = 1;
+    }
+  }
+  return occuObj;
+}
+// console.log(countOccurrencies([1, 1, 2]));
+
+//10
+let listOfCryptoPrices = [5, 12, 4, 2, 1, 20];
+function calcCrypto() {
+  let maxProfit = 0;
+  let minPrice = listOfCryptoPrices[0];
+
+  for (let i = 1; i < listOfCryptoPrices.length; i++) {
+    console.log(listOfCryptoPrices[i]);
+    if (listOfCryptoPrices[i] < minPrice) {
+      minPrice = listOfCryptoPrices[i];
+    } else if (listOfCryptoPrices[i] - minPrice > maxProfit) {
+      maxProfit = listOfCryptoPrices[i] - minPrice;
+    }
+  }
+  return maxProfit;
+}
+// console.log(calcCrypto(listOfCryptoPrices));
+
+//11
+function arrOfNums(nums) {
+  let highestNumber = nums[0];
+  let sumOfSmallerNumbers = 0;
+
+  //hitta högsta talet
+  nums.forEach((num) => {
+    if (num > highestNumber) {
+      highestNumber = num;
+    }
+  });
+
+  //alla små tal tsm
+  nums.forEach((num) => {
+    if (num !== highestNumber) {
+      sumOfSmallerNumbers += num;
+    }
+  });
+
+  if (sumOfSmallerNumbers > highestNumber) {
+    console.log("true - smaller numbers prevail");
+    return true;
+  } else {
+    console.log("false - biggest number wins");
+    return false;
+  }
+}
+arrOfNums([1, 1, 5]);
+arrOfNums([3, 3, 4]);
+
+//12
+function calcGeo(geo) {
+  const pi = Math.PI;
+  return geo.map((radius) => {
+    const area = parseFloat((pi * Math.pow(radius, 2)).toFixed(2));
+    const circ = parseFloat((2 * pi * radius).toFixed(2));
+    const dia = parseFloat((2 * radius).toFixed(2));
+    return {
+      radius: radius,
+      area: area,
+      circ: circ,
+      dia: dia,
+    };
+  });
+}
+const circles = calcGeo([2, 1, 4]);
+console.log(circles);
